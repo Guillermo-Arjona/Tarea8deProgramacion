@@ -1,0 +1,8 @@
+[Unit]
+Description=tarea8 socket
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target

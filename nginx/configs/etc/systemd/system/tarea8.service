@@ -1,0 +1,19 @@
+[Unit]
+Description=Instancia de Gunicorn para el app de Flask - Tarea 8
+Requires=tarea8.socket
+After=network.target
+
+
+[Service]
+User=edg
+Group=www-data
+WorkingDirectory=/home/edg/projects/flask/tareas/Tarea 8/gunicorn
+Environment="PATH=/home/edg/projects/flask/tareas/flaskenv/bin"
+ExecStart=/home/edg/projects/flask/tareas/flaskenv/bin/gunicorn \
+          access-logfile -  \
+          --workers 3 \
+          --bind unix:/run/tarea8.sock -m 007 \
+          wsgi:app
+
+[Install]
+WantedBy=multi-user.target
